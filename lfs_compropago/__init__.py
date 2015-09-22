@@ -5,19 +5,21 @@ from django.conf import settings
 from lfs.plugins import PaymentMethodProcessor
 from lfs.plugins import PM_ORDER_IMMEDIATELY
 
-from compropago import CompropagoAPI, Charge
+from compropago import CompropagoAPI, CompropagoCharge
 
 
 class CompropagoMethodProcessor(PaymentMethodProcessor):
     def process(self):
         from lfs.core.utils import get_default_shop
-        shop = get_default_shop(self.request) 
+        shop = get_default_shop(self.request)
         api = CompropagoAPI(settings.LFS_COMPROPAGO_PUBLIC_API_KEY)
-        c = Charge(
-            product_price = self.order.price,
-            product_name = shop.name,
-            product_id = str(self.order.number),
-            customer_name = order.user.first_name + order.user.last_name,
+        order = self.order
+        c = CompropagoCharge(
+            order_id = str(order.number),
+            order_price = order.price,
+            order_name = shop.name,
+            image_url = 'https://getfedora.org/static/images/fedora_infinity_140x140.png',
+            customer_name = order.user.get_full_name() or order.user.email,
             customer_email = order.user.email,
             payment_type = "OXXO"
         )
@@ -29,7 +31,7 @@ class CompropagoMethodProcessor(PaymentMethodProcessor):
         }
 
     def get_create_order_time(self):
-        return PM_ORDER_ACCEPTED
+        return PM_ORDER_IMMEDIATELY
 
     def get_pay_link(self):
         total = self.order.price
