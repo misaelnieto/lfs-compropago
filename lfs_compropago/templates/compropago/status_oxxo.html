@@ -1,0 +1,23 @@
+{% extends "lfs/base.html" %}
+{% load i18n lfs_tags lfs_portlets_tags %}
+
+{% block title %}
+    {{ SHOP.get_meta_title }} - Pago en OXXO.
+{% endblock %}
+
+{% block section %}comments{% endblock %}
+
+{% block content %}
+<h3>Instrucciones de pago en OXXO</h3>
+<ul>
+    <li>Acude a tu tienda OXXO más cercana en un horario de 8 a.m. a 8 p.m.</li>
+    <li>Solicita un depósito bancario a nombre de
+        <strong>{{ instructions.details.bank_name}}</strong>,
+        número de cuenta: <strong>{{ instructions.details.bank_account_number }}</strong>
+        por la cantidad exacta de $<strong>{{ instructions.details.payment_amount }}</strong> pesos.</li>
+        <li>Una vez que OXXO haya procesado el pago enviará una notificación a nuestro sitio donde nosotros continuaremos con el proceso de tu orden de compra.
+    </li>
+    <li> <em>Nota:</em> {{ instructions.note_extra_comition }} </li>
+    <li> <em>Nota:</em> {{ instructions.note_expiration_date }} </li>
+</ul>
+{% endblock %}
