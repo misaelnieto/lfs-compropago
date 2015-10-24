@@ -9,6 +9,6 @@ setup(
     author_email = 'nnieto@noenieto.com',
     license = 'MIT',
     url = 'http://github.io/tzicatl/lfs-compropago',
-    install_requires = ['compropago-python',],
+    install_requires = ['compropago-python','python-dateutil'],
     tests_require = ['nose>=1.0', 'responses'],
 )
