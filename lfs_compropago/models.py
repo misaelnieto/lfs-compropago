@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 
 from lfs.order.models import Order
@@ -14,7 +13,7 @@ class CompropagoCurrencyConversion(models.Model):
 class CompropagoTransaction(models.Model):
     PAYMENT_TYPE_CHOICES = (
         ("OXXO", "Oxxo"),
-        ("SEVEN_ELEVEN", "Seven Eleven"),
+        ("SEVEN_ELEVEN", "7 Eleven"),
         ("EXTRA", "Extra"),
         ("CHEDRAUI", "Chedraui"),
         ("ELEKTRA", "Elektra"),
@@ -27,14 +26,14 @@ class CompropagoTransaction(models.Model):
         db_table = 'lfs_compropago_transaction'
 
     order = models.ForeignKey(Order, unique=True)
-    payment_type = models.CharField(max_length=255)
-    payment_id = models.CharField(max_length=255)
-    short_payment_id = models.CharField(max_length=255)
-    payment_status = models.CharField(max_length=32)
-    creation_date = models.DateTimeField()
-    expiration_date = models.DateTimeField()
-    updated_date = models.DateTimeField()
-    product_information = models.TextField()
-    payment_instructions = models.TextField()
+    payment_status = models.CharField(max_length=32, blank=True)
+    payment_type = models.CharField(max_length=255, choices=PAYMENT_TYPE_CHOICES, blank=True)
+    payment_id = models.CharField(max_length=255, blank=True)
+    short_payment_id = models.CharField(max_length=255, blank=True)
+    creation_date = models.DateTimeField(null=True)
+    expiration_date = models.DateTimeField(null=True)
+    updated_date = models.DateTimeField(null=True)
+    product_information = models.TextField(blank=True)
+    payment_instructions = models.TextField(blank=True)
     verified = models.BooleanField(default=False)
 
