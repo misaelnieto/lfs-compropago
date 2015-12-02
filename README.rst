@@ -60,10 +60,3 @@ Restart Django.
 After restart, go to "Manage -> Payment methods", add a new one, and select
 "Compropago" on "Module" field.
 
-
-Changes
-=========
-
-1.0 (2015-12-01) Initial release
-
-
