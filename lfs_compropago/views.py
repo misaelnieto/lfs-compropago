@@ -108,7 +108,3 @@ def web_hook_view(request):
         txn.order.state = PAID
         txn.order.save()
     return HttpResponse(str(res), content_type="text/plain")
-
-
-
-
