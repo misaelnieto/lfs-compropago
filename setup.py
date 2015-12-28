@@ -6,9 +6,14 @@ from setuptools import setup, find_packages
 from os import path
 
 here = path.abspath(path.dirname(__file__))
-# Get the long description from the README.rst file
+
 with open(path.join(here, 'README.rst')) as f:
     long_description = f.read()
+with open(path.join(here, 'CONTRIBUTORS.rst')) as f:
+    long_description += f.read()
+with open(path.join(here, 'CHANGES.rst')) as f:
+    long_description += f.read()
+
 
 setup(
     name = 'lfs-compropago',
