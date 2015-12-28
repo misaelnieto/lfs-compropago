@@ -1,7 +1,8 @@
+=======
 CHANGES
 =======
 
-0.2 (unreleased)
+0.2 (2015-12-27)
 ----------------
 
 * Improve documentation and packaging.
