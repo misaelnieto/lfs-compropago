@@ -12,7 +12,7 @@ with open(path.join(here, 'README.rst')) as f:
 
 setup(
     name = 'lfs-compropago',
-    version = '0.1',
+    version = '0.2',
     description = 'ComproPago payment processor for Django-LFS',
     long_description = long_description,
     url = 'http://github.io/tzicatl/lfs-compropago',
@@ -32,6 +32,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     keywords='ecommerce e-commerce payment development mexico lfs django-lfs',
+    include_package_data=True,
     install_requires = ['compropago-python','python-dateutil'],
     tests_require = ['nose>=1.0', 'responses'],
 )
