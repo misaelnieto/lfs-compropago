@@ -2,6 +2,7 @@ from django.db import models
 
 from lfs.order.models import Order
 
+
 class CompropagoCurrencyConversion(models.Model):
     class Meta:
         db_table = 'lfs_compropago_currency_conversion'
@@ -24,6 +25,7 @@ class CompropagoTransaction(models.Model):
     """A transaction with compropago gateway"""
     class Meta:
         db_table = 'lfs_compropago_transaction'
+        ordering = ["-creation_date"]
 
     order = models.ForeignKey(Order, unique=True)
     payment_status = models.CharField(max_length=32, blank=True)
@@ -37,3 +39,22 @@ class CompropagoTransaction(models.Model):
     payment_instructions = models.TextField(blank=True)
     verified = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return u'Compropago transaction id %s' % self.short_payment_id
+
+
+class CompropagoWebHookHit(models.Model):
+    """Stores the headers and body of every call made to the compropago Hook."""
+    class Meta:
+        db_table = 'lfs_compropago_webhook_hit'
+        ordering = ["-created"]
+
+    scheme = models.CharField(max_length=8, null=False)
+    headers = models.TextField(max_length=4096, null=False)
+    path = models.CharField(max_length=4096, null=False)
+    body = models.TextField(null=False)
+    transaction = models.ForeignKey(CompropagoTransaction, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return u'Webhook hit on %s' % self.created

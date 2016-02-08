@@ -31,11 +31,12 @@ It should look like this:
         ["lfs_compropago.CompropagoProcessor", _(u"Compropago")],
     ]
 
-Also add it to ``INSTALLED_APPS``:
+Add the compropago app to ``INSTALLED_APPS``. Do not forget to also list ``django.contrib.humanize``:
 
 .. code:: python
 
     INSTALLED_APPS = (
+        'django.contrib.humanize',
         ...
         'lfs_compropago',
     )
@@ -44,7 +45,13 @@ Now add settings for your compropago account:
 
 .. code:: python
 
-    COMPROPAGO_API_KEY = "UwG9SYdHvh7bZ6eFA3242xxyyzz"
+    LFS_COMPROPAGO_PRIVATE_API_KEY='pk_test_95a6ded8c854153ff'
+    LFS_COMPROPAGO_CONVERT_FROM_USD = True
+    LFS_COMPROPAGO_OPENXCHANGE_API_KEY='skdd_test_5c8658531ec449283'
+
+The default currency for LFS is USD but Compropago only uses MXN. I use `OpenExchangeRates.org <https://openexchangerates.org>`_ 
+to get an updated conversion
+``LFS_COMPROPAGO_CONVERT_FROM_USD`` to True if you want 
 
 Finally, add url routingsin your ``urls.py``:
 

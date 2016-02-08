@@ -1,5 +1,5 @@
 {% extends "lfs/base.html" %}
-{% load i18n lfs_tags lfs_portlets_tags %}
+{% load i18n lfs_tags lfs_portlets_tags humanize %}
 
 {% block title %}
     {{ SHOP.get_meta_title }} - Pago en efectivo
@@ -9,6 +9,22 @@
 
 {% block content %}
 <h1>Pago en efectivo</h1>
+<p>
+
+    Tu orden de compra es por <b>{{ amount_usd|currency }}</b> dólares
+    estadounidenses (<b>USD</b>) equivalente a <b>{{ amount_mxn|currency }}</b>
+    pesos mexicanos (<b>MXN</b>).
+</p>
+
+<p>
+
+    Los pagos en efectivo para México deben ser hechos en pesos mexicanos
+    (MXN). El tipo de cambio es de <b>{{ conversion_rate|currency }} MXN</b>
+    por dólar de acuerdo al tipo de cambio proporcionado por <a href="http://www.banxico.org.mx/portal-mercado-cambiario/index.html">
+    El Banco de Mexico</a> el día {{ today|date:'d' }} de
+    {{ today|date:'F' }} de {{ today|date:'Y' }} a las  {{ today|date:'P' }}.
+
+</p>
 <p>
     Puedes pagar en efectivo en alguno de los siguientes establecimientos. Elige
     el que más te convenga de la lista y presiona el botón <b>Generar ticket de pago</b>
@@ -31,14 +47,15 @@
             <div class="span-5">
                 {{ value }}
             </div>
-            <dv class="span-4">
+            <div class="span-4">
                 <img src="{{ STATIC_URL }}/compropago/logos/{{ key|lower }}.png" height="24">
-            </dv>
+            </div>
         </label>
     </div>
     {% endfor %}
     <div class="right">
-        <button type="submit" class="button emphasized">Generar ticket de pago</button>
+        <button type="submit" class="button emphasized">
+        Generar ticket de pago por {{ amount_mxn|currency }} MXN</button>
     </div>
 </form>
 {% endblock %}

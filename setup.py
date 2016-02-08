@@ -17,7 +17,7 @@ with open(path.join(here, 'CHANGES.rst')) as f:
 
 setup(
     name = 'lfs-compropago',
-    version = '0.2',
+    version = '0.4',
     description = 'ComproPago payment processor for Django-LFS',
     long_description = long_description,
     url = 'http://github.io/tzicatl/lfs-compropago',
@@ -38,6 +38,6 @@ setup(
     ],
     keywords='ecommerce e-commerce payment development mexico lfs django-lfs',
     include_package_data=True,
-    install_requires = ['compropago-python','python-dateutil'],
+    install_requires = ['compropago-python>=0.2','python-dateutil', 'suds', 'BeautifulSoup'],
     tests_require = ['nose>=1.0', 'responses'],
 )
