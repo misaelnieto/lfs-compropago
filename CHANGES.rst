@@ -2,6 +2,10 @@
 CHANGES
 =======
 
+0.4.2 (2016-02-08)
+------------------
+* Fix bad dependecy on BeautifoulSoup 
+
 0.4 (2016-02-7)
 ----------------
 * Moar compatibility fixes to API version 1.0 and 1.1
