@@ -4,7 +4,7 @@ CHANGES
 
 0.4.2 (2016-02-08)
 ------------------
-* Fix bad dependecy on BeautifoulSoup 
+* Fix bad dependecy on BeautifoulSoup 4 
 
 0.4 (2016-02-7)
 ----------------
