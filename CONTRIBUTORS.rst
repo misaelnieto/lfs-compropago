@@ -1,7 +1,7 @@
 Contributing
 ============
 
-Submit bugs and issues to the   `GitHub repository <https://github.com/tzicatl/lfs-compropago>`_.
+Submit bugs and issues to the   `GitHub repository <https://github.com/misaelnieto/lfs-compropago>`_.
 
 AUTHORS
 =======

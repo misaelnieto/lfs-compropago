@@ -1,6 +1,6 @@
 """ComproPago payment processor for Django-LFS
 See:
-https://github.com/tzicatl/lfs-compropago
+https://github.com/misaelnieto/lfs-compropago
 """
 from setuptools import setup, find_packages
 from os import path
@@ -20,7 +20,7 @@ setup(
     version = '0.4.3',
     description = 'ComproPago payment processor for Django-LFS',
     long_description = long_description,
-    url = 'http://github.io/tzicatl/lfs-compropago',
+    url = 'http://github.io/misaelnieto/lfs-compropago',
     author = 'Noe Nieto',
     author_email = 'nnieto@noenieto.com',
     packages = find_packages(),
